@@ -25,17 +25,17 @@ public class DepartmentController {
 	}
 
 	@GetMapping(value = "/{departmentId}")
-	public Department getDepartmentById(@PathVariable long departmentId) {
+	public Department getById(@PathVariable long departmentId) {
 		return departmentService.findById(departmentId);
 	}
 
 	@PutMapping
-	public Department createDepartment(@RequestBody Department department) {
+	public Department create(@RequestBody Department department) {
 		return departmentService.create(department);
 	}
 
 	@PatchMapping
-	public Department updateDepartment(@RequestBody Department department) {
+	public Department update(@RequestBody Department department) {
 		return departmentService.update(department);
 	}
 
