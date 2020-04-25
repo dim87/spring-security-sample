@@ -2,6 +2,7 @@ package com.sda.angularhomeworkbackend.modules.positions;
 
 import java.util.List;
 
+import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +26,15 @@ class PositionService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public Position create(final Position position) {
+		Validate.isTrue(position.getId() == null, "id most not be defined when creating record for '%s'", position);
+		Validate.notBlank(position.getTitle(), "title is blank for '%s'", position);
 		return positionRepository.save(position);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
 	public Position update(final Position position) {
+		Validate.notNull(position.getId(), "id is null for '%s'", position);
+		Validate.notBlank(position.getTitle(), "title is blank for '%s'", position);
 		return positionRepository.save(position);
 	}
 
