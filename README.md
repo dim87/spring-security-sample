@@ -40,7 +40,10 @@ This was to done to help you with testing you angular application.
 
 In the console you can browse tables, see the structure, and see the data that is in our running database.
 
-### Importing Postman Collection
+## Backend endpoints
+Backend should be called by address ```localhost:8080```. You can check what specific endpoints are availabe in Controller classes of Java application.
+
+## Importing Postman Collection
 I have added a postman collection (angular-homework.postman_collection.json) that you 
 can import and see all the requests that can be sent to backend. In Postman application you can press "Import" and add this file,
 after that you will see a new collection with all the requests.
