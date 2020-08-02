@@ -18,3 +18,9 @@ CREATE TABLE employees (
 	foreign key (department_id) references departments (id),
 	foreign key (position_id) references positions (id)
 );
+
+CREATE TABLE users (
+	id       INT AUTO_INCREMENT PRIMARY KEY,
+	email    VARCHAR(250) DEFAULT NULL UNIQUE,
+	password VARCHAR(250) DEFAULT NULL UNIQUE
+);
