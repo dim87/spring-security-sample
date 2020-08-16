@@ -59,7 +59,8 @@ public class JwtAuthFilter extends BasicAuthenticationFilter {
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_ADMINISTRATOR"));
 
-		Authentication authentication = new UsernamePasswordAuthenticationToken(claims.getSubject(), null, authorities);
+		final String userId = claims.getSubject();
+		Authentication authentication = new UsernamePasswordAuthenticationToken(userId, null, authorities);
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		chain.doFilter(request, response);

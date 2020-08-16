@@ -33,6 +33,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value = "/{employeeId}")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public Employee getById(@PathVariable long employeeId) {
 		return employeeService.findById(employeeId);
 	}

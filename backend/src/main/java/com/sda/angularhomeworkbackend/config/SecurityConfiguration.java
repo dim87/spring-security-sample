@@ -35,9 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable().cors().and().headers().frameOptions()
-			.sameOrigin() // allow frameOptions for H2 console
-			.and().exceptionHandling().and().addFilter(jwtAuthFilterBean())
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and().csrf().disable()
+			.cors()
+			.and().headers().frameOptions().sameOrigin() // allow frameOptions for H2 console
+			.and().exceptionHandling()
+			.and().addFilter(jwtAuthFilterBean())
 
 			.authorizeRequests().antMatchers("/h2/**").permitAll() // permit all requests to H2 console, they are secured anyway
 			.antMatchers(HttpMethod.PUT, "/users").permitAll() // allow creation of users

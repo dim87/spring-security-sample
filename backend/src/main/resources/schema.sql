@@ -24,3 +24,18 @@ CREATE TABLE users (
 	email    VARCHAR(250) DEFAULT NULL UNIQUE,
 	password VARCHAR(250) DEFAULT NULL UNIQUE
 );
+
+CREATE VIEW v_departments
+		(
+		 id,
+		 title,
+		 employee_count
+		)
+AS
+	SELECT
+		d.id,
+		d.title,
+		COUNT(e.id)
+	FROM departments d
+	     JOIN employees e ON d.id = e.department_id
+	GROUP BY d.id;
